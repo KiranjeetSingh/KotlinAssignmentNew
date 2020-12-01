@@ -12,6 +12,6 @@ class UrlModule {
     @Singleton
     @Named("baseUrl")
     fun provideBaseUrl(): String {
-        return "https://jsonplaceholder.typicode.com/"
+        return "https://gorest.co.in/"
     }
 }

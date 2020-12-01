@@ -4,10 +4,9 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.kotlinassignment.TodoItmeAdapter
-import com.example.kotlinassignment.data.Todo
+import com.example.kotlinassignment.UserItmeAdapter
+import com.example.kotlinassignment.data.User
 import com.example.kotlinassignment.databinding.ActivityMainBinding
 import dagger.android.support.DaggerAppCompatActivity
 import javax.inject.Inject
@@ -15,12 +14,13 @@ import javax.inject.Inject
 class HomeActivity : DaggerAppCompatActivity() {
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
-    private var todoList = ArrayList<Todo>()
-    var todoItmeAdapter: TodoItmeAdapter?=null
+    private var userList = ArrayList<User>()
+    var userItmeAdapter: UserItmeAdapter?=null
     lateinit var binding: ActivityMainBinding
     val homeViewModel: HomeViewModel by lazy {
         ViewModelProvider(this, viewModelFactory).get(HomeViewModel::class.java)
     }
+    // Lateinit var null check
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,31 +30,38 @@ class HomeActivity : DaggerAppCompatActivity() {
         binding.executePendingBindings()
         handleObservers()
         setAdapter()
-        homeViewModel.getTodoList()
+        homeViewModel.getUserList()
     }
 
     private fun handleObservers(){
-        homeViewModel.todoData.observe(this, Observer {list->
-           todoList.addAll(list)
-            todoItmeAdapter?.notifyDataSetChanged()
+        homeViewModel.userData.observe(this, Observer {list->
+            userList.addAll(list)
+            userItmeAdapter?.notifyDataSetChanged()
         })
 
         homeViewModel.noInternetError.observe(this, Observer {messg->
             binding.tvErrorMsg.text = messg
+
+            messg.toast()
         })
+
+
 
     }
 
 
     private fun setAdapter() {
-        todoItmeAdapter = TodoItmeAdapter(
+        userItmeAdapter = UserItmeAdapter(
             this,
-            todoList
+            userList
         )
         binding.rv?.apply {
             layoutManager = LinearLayoutManager(this@HomeActivity)
-            addItemDecoration(DividerItemDecoration(this@HomeActivity, DividerItemDecoration.VERTICAL))
-            adapter = todoItmeAdapter
+            adapter = userItmeAdapter
         }
+    }
+
+    fun String.toast(){
+        Toast.makeText(this@HomeActivity,this,Toast.LENGTH_SHORT).show()
     }
 }

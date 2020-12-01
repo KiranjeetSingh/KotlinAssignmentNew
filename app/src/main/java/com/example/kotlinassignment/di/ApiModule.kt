@@ -1,6 +1,6 @@
 package com.example.kotlinassignment.di
 
-import com.example.kotlinassignment.data.TodoListApi
+import com.example.kotlinassignment.data.UserListApi
 import dagger.Module
 import dagger.Provides
 import retrofit2.Retrofit
@@ -11,7 +11,7 @@ class ApiModule {
 
     @Provides
     @Singleton
-    fun provideToDoApi(retrofit: Retrofit): TodoListApi {
-        return retrofit.create(TodoListApi::class.java)
+    fun provideToDoApi(retrofit: Retrofit): UserListApi {
+        return retrofit.create(UserListApi::class.java)
     }
 }

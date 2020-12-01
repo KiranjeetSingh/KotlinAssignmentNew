@@ -1,16 +1,14 @@
 package com.example.kotlinassignment.di
 
-import com.example.kotlinassignment.data.TodoListApi
-import com.example.kotlinassignment.domain.TodoRepository
-import com.example.kotlinassignment.data.TodoRepositoryImpl
+import com.example.kotlinassignment.domain.UserRepository
+import com.example.kotlinassignment.data.UserRepositoryImpl
+import dagger.Binds
 import dagger.Module
-import dagger.Provides
 
 @Module(includes = [ApiModule::class])
-class RepositoryModule {
+abstract class RepositoryModule {
 
-    @Provides
-    fun provideTodoListRepository(api: TodoListApi): TodoRepository {
-        return TodoRepositoryImpl(api)
-    }
+    @Binds
+    abstract fun provideUserListRepository(api: UserRepositoryImpl): UserRepository
+
 }

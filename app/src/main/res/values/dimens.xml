@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="margin_10dp">10dp</dimen>
-    <dimen name="medium_txt_size">16sp</dimen>
-    <dimen name="large_txt_size">18sp</dimen>
-    <dimen name="small_txt_size">14sp</dimen>
+    <dimen name="margin_5dp">5dp</dimen>
+    <dimen name="margin_4dp">4dp</dimen>
+    <dimen name="medium_txt_size">12sp</dimen>
+    <dimen name="large_txt_size">14sp</dimen>
+    <dimen name="small_txt_size">10sp</dimen>
 </resources>

@@ -32,7 +32,7 @@
         android:layout_height="wrap_content"
         android:visibility="@{viewModel.showLoader? View.GONE:View.VISIBLE}"
         app:layout_constraintTop_toTopOf="parent"
-        tools:listitem="@layout/item_todo"/>
+        tools:listitem="@layout/item_user"/>
 
     <LinearLayout
         android:id="@+id/ll_error"

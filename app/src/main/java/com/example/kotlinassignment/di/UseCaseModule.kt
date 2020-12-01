@@ -1,16 +1,14 @@
 package com.example.kotlinassignment.di
 
-import com.example.kotlinassignment.domain.ToDoUseCase
-import com.example.kotlinassignment.domain.TodoRepository
-import com.example.kotlinassignment.domain.TodoUseCaseImpl
+import com.example.kotlinassignment.domain.UserUseCase
+import com.example.kotlinassignment.domain.UserUseCaseImpl
+import dagger.Binds
 import dagger.Module
-import dagger.Provides
 
 @Module/*(includes = [ViewModelModule::class, ApiModule::class])*/
-class UseCaseModule {
+abstract class UseCaseModule {
 
-    @Provides
-    fun provideTodoUseCaseImpl(repository: TodoRepository): ToDoUseCase =
-        TodoUseCaseImpl(repository)
+    @Binds
+    abstract fun provideUserUseCaseImpl(repository: UserUseCaseImpl): UserUseCase
 
 }
